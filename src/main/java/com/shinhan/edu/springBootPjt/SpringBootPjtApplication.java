@@ -1,4 +1,4 @@
-package com.shinhan.springBootPjt;
+package com.shinhan.edu.springBootPjt;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -30,12 +30,14 @@ import lombok.extern.java.Log;
 @SpringBootTest
 @Log
 class BoardTests {
-	
+
 	Logger LOGGER = LoggerFactory.getLogger(BoardTests.class);
 	@Autowired
 	BoardRepository boardRepository;
+
 	
 	
+	/*
 	@Test
 	void dynamicSQLTest() {
 		String title= "9"; 	//where title like '%9%'
@@ -221,11 +223,11 @@ class BoardTests {
 	@Test
 	void contextLoads() {
 	}*/
-	
+
 	@Test
 	public void testcondition2() {
 		List<BoardVO> bList = boardRepository.findByTitleContaining("9");
-		bList.forEach(board->{
+		bList.forEach(board -> {
 			System.out.println(board);
 		});
 	}

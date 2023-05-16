@@ -21,7 +21,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Builder @NoArgsConstructor @AllArgsConstructor
-@Getter @Setter @ToString
+@Getter @Setter @ToString//(exclude = {"files","files2"})
 @Entity
 @Table(name = "tbl_pdsboard")
 @EqualsAndHashCode(of = "pid")

@@ -18,6 +18,11 @@
 	</properties>
 	<dependencies>
 	
+	
+		<dependency>
+		   <groupId>nz.net.ultraq.thymeleaf</groupId>
+		   <artifactId>thymeleaf-layout-dialect</artifactId>
+		</dependency>
 	<!-- query dsl -->
 		<dependency>
 		   <groupId>com.querydsl</groupId>

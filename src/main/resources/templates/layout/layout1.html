@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet"
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<style>
+ p { color:red;}
+</style>
+<script>
+ alert("부모에서 작성된 JavaScript");
+</script>
+</head>
+<body>
+<!-- 하위 HTML에서 CSS 재정의할 예정 -->
+<th:block layout:fragment="style1"></th:block>
+<!-- fragment 삽입하기 -->
+<header th:replace="fragments/header :: header3"></header>
+<!-- 하위 HTML에서 content 재정의할 예정 -->
+<div class="panel panel-default" layout:fragment="content1">
+
+<table th:with="target1='user4', target2='user9'">
+<tr>
+<td>count, index</td>
+<td>first, last</td>
+<td>even, odd</td>
+<td>size</td>
+<td>No</td>
+<td>상세보기</td>
+<td>제목</td>
+<td>작성자</td>
+<td>target</td>
+<td>삭제button</td>
+<td>내용</td>
+<td>작성일</td>
+<td>수정일</td>
+</tr>
+<tr th:each="board,rowstatus : ${boardList}"
+	th:class="${rowstatus.even}?'evenStyle':'oddStyle'"
+	th:classappend="${rowstatus.first or rowstatus.last}?'firstStyle':''">
+	
+<td th:text="${rowstatus.index+ '---'+ rowstatus.count}">No</td>
+<td th:text="|${rowstatus.first} --- ${rowstatus.last}|">No</td>
+<td th:text="|${rowstatus.even} --- ${rowstatus.odd}|">No</td>
+<td th:text="${rowstatus.size}">No</td>
+<td th:text="${board.bno}">No</td>
+<td><a th:href="@{detail(bno=${board.bno})}">상세보기</a> </td>
+<td th:text="${board.title}">제목</td>
+<td th:text="${board.writer}">작성자</td>
+<td th:text="${board.writer==target1?'찾음(user4)':'손님'}">작성자</td>
+<td>
+	<a th:if="${board.writer==target1}" href="#">삭제</a>
+	<p th:unless="${board.writer==target1}">view</p>
+</td>
+<td th:text="${board.content}">내용</td>
+<td >[[${board.regdate}]]</td>  <!-- 인라인으로 thymeleaf -->
+<td >[[${board.updateDate}]]</td>
+<!-- <td th:text="${board.replies}">댓글</td> -->
+</tr>
+
+</table>
+
+</div>
+<footer th:replace="fragments/footer :: footer3"></footer>
+<!-- 하위 HTML에서 javascript 재정의할 예정  th:block 은 없어지는 태그이다 -->
+<th:block layout:fragment="script1">
+	var boardList = [[${boardList}]];
+	console.log(boardList[0]);
+	$.each(boardList, function(index, item){
+		console.log(item)
+	})
+</th:block>
+</body>
+</html>

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.stream.IntStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,15 +16,29 @@ import com.shinhan.edu.vo.BoardVO;
 import com.shinhan.edu.vo.CarVO;
 import com.shinhan.edu.vo.QBoardVO;
 import com.shinhan.repository.BoardRepository;
+import com.shinhan.repository.PDSBoardRepository;
+import com.shinhan.repository.PDSFileRepository;
 
 import lombok.extern.java.Log;
 
 @Log
 @RestController //@Controller+@ResponseBody->@responsebody.getWriter().append("jsp/servlet")
-public class SampleController {
+public class SampleRestController {
 	
 	@Autowired
 	BoardRepository boardRepository;
+	@Autowired
+	PDSFileRepository fileRepo;
+	@Autowired
+	PDSBoardRepository pdsboardRepo;
+	
+	
+	@GetMapping("/monday")
+	String fileUPdate() {
+		int result = pdsboardRepo.updateFile(10L, "머릿말(수정2)");
+		return "OK : "+result;
+	}
+	
 	
 	@GetMapping("/sunday")
 	public List<BoardVO> dynamicSQLTest() {

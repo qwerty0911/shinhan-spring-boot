@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+ <h1>THyme leaf</h1>
+<h2 th:text="${company}"></h2>
+<p th:text="${ '<h1>' + greeting + '</h1>' }">출력 안되는 부분</p>
+<p th:utext="${ '<h1>' + greeting + '</h1>' }">출력 안되는 부분</p> <!-- 태그가 동작함! -->
+</body>
+</html>

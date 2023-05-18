@@ -11,7 +11,7 @@ href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
  p { color:red;}
 </style>
 <script>
- alert("부모에서 작성된 JavaScript");
+ /* alert("부모에서 작성된 JavaScript"); */
 </script>
 </head>
 <body>
@@ -67,11 +67,7 @@ href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 <footer th:replace="fragments/footer :: footer3"></footer>
 <!-- 하위 HTML에서 javascript 재정의할 예정  th:block 은 없어지는 태그이다 -->
 <th:block layout:fragment="script1">
-	var boardList = [[${boardList}]];
-	console.log(boardList[0]);
-	$.each(boardList, function(index, item){
-		console.log(item)
-	})
+script1
 </th:block>
 </body>
 </html>

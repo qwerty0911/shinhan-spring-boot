@@ -29,11 +29,11 @@ public class PageMarker<T> {
 		this.currentPageNum = currentPage.getPageNumber()+1;
 		this.totalPageNum = result.getTotalPages();
 		this.pageList = new ArrayList<Pageable>();
-		calcPage();
+		calcPage(5);
 	}
-	public void calcPage() {
-		int tempEndNum = (int)(Math.ceil(currentPageNum/10.0)*10);
-		int startNum = tempEndNum - 9;
+	public void calcPage(int cnt) {
+		int tempEndNum = (int)(Math.ceil(currentPageNum/(cnt*1.0)*cnt));
+		int startNum = tempEndNum - (cnt-1);
 		Pageable startPage = this.currentPage;
 		for(int i = startNum; i<this.currentPageNum; i++) {
 			startPage = startPage.previousOrFirst();

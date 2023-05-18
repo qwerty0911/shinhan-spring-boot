@@ -44,7 +44,7 @@ public class WebReply {
 	Timestamp updateDate;
 	
 	
-	//@JsonIgnore
+	@JsonIgnore
 	@BatchSize(size = 100)
 	@ManyToOne(fetch=FetchType.LAZY)
 	WebBoard board;

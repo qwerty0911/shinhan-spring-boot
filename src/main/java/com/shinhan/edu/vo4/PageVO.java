@@ -4,10 +4,16 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
+import groovy.transform.ToString;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter @Setter
+@Getter 
+@Builder @AllArgsConstructor 
+@ToString
 public class PageVO {
 	private static final int DEFAULT_SIZE = 10;
 	private static final int DEFAULT_MAX_SIZE = 50;	
@@ -28,4 +34,18 @@ public class PageVO {
 		Sort.Direction dir = direction==0?Sort.Direction.DESC:Sort.Direction.ASC;
 		return PageRequest.of(this.page-1, this.size, dir, prop);
 	}
+	
+	public void setPage(int page) {
+		this.page = page;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	
+	
+	
 }

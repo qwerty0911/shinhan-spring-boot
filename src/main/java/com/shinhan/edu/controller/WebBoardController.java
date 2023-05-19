@@ -23,15 +23,18 @@ import com.shinhan.edu.vo4.WebBoard;
 import com.shinhan.repository2.WebBoardRepository;
 import com.shinhan.repository2.WebReplyRepository;
 
+import io.swagger.annotations.ApiOperation;
+
 @RequestMapping("/webboard")
 @Controller
 public class WebBoardController {
 	@Autowired
 	WebBoardRepository boardRepo;
+	
 	@Autowired
 	WebReplyRepository replyRepo;
 	
-	
+	@ApiOperation(value = "화면 보여주기", notes= "화면 보여주기")
 	@GetMapping("/list.do")
 	public void selectAll(PageVO pageVO, Model model) {
 		
